@@ -1,0 +1,66 @@
+{
+  "info": {
+    "name": "Feedback Management System",
+    "_postman_id": "fms-collection-001",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Sample Postman collection for the Feedback Management System API."
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8000/api/v1" }
+  ],
+  "item": [
+    {
+      "name": "List feedback",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/feedback?page=1&page_size=10"
+      }
+    },
+    {
+      "name": "Get feedback by id",
+      "request": { "method": "GET", "url": "{{baseUrl}}/feedback/1" }
+    },
+    {
+      "name": "Create feedback",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/feedback",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"participant_name\": \"Jane Doe\",\n  \"program_name\": \"AI Bootcamp 2026\",\n  \"rating\": 5,\n  \"comments\": \"Outstanding mentors and content.\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Update feedback",
+      "request": {
+        "method": "PUT",
+        "url": "{{baseUrl}}/feedback/1",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"rating\": 4,\n  \"comments\": \"Updated after closing session.\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Delete feedback",
+      "request": { "method": "DELETE", "url": "{{baseUrl}}/feedback/1" }
+    },
+    {
+      "name": "Search feedback",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/feedback/search?keyword=bootcamp&rating=5"
+      }
+    },
+    {
+      "name": "Dashboard stats",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/feedback/stats?recent_limit=5"
+      }
+    }
+  ]
+}
